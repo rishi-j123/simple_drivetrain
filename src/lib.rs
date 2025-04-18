@@ -1,10 +1,10 @@
 mod subsystems;
 mod constants;
 
-use crate::subsystems::drivetrain;
-
 use frcrs::input::Joystick;
+
 use crate::constants::joystick_map::DRIVER_JOYSTICK_ID;
+use crate::subsystems::drivetrain;
 
 pub struct Ferris {
     drivetrain: drivetrain::Drivetrain,
@@ -17,7 +17,6 @@ impl Ferris {
         }
     }
 }
-
 
 pub struct InputSystem {
     joystick: Joystick,
@@ -32,5 +31,5 @@ impl InputSystem {
 }
 
 pub fn teleop(ferris: &Ferris, input: &InputSystem) {
-    ferris.drivetrain.power_all(input.joystick.get_y());
+    ferris.drivetrain.fr_forward(input.joystick.get_y());
 }
